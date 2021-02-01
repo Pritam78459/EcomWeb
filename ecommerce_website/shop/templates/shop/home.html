@@ -1,0 +1,19 @@
+{% extends "shop/base.html" %}
+{% block content %}
+	{% for product in products %}
+	<div class="card bg-secondary text-white" style="width:400px" >
+	  
+	  <div class="card-body" >
+	    
+	    <img class="card-img-top" src="img_avatar1.png" alt="Product image">
+		<h1>{{ product.seller }} </h1>
+		<h3> {{product.name}} </h3>
+		<p>{{product.image}}</p>
+		<h4>{{product.date_added}}</h4>
+		
+	  </div>
+	</div>
+	&nbsp
+	{% endfor %}
+	
+{% endblock content %}
