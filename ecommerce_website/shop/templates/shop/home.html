@@ -5,12 +5,20 @@
 			
 	{% for product in products %}
 	<div class="col-xl">
-	<div class="card bg-secondary text-white" style="width:400px" >
-	  <img class="card-img-top" style="height:200px" src="{{product.image}}" alt="Card image">
+	<div class="card" style="width:400px;background-color: #dcdcdc" >
+		<h6 style="margin-left: 2%;margin-top: 2%" > {{product.date_posted}}</h6><p style="color: dodgerblue;margin-right: 70%; font-size:25px;margin-left: 2%" >  {{ product.seller }}</p>
+	  <img class="card-img-top" style="height:200px" src="{{product.image.url}}" alt="Card image"/>
 	  <div class="card-body" >
-		<h1>{{ product.seller }} </h1>
-		<h3> {{product.name}} </h3>
-		<p style="font-size: 10px; margin-left: 70% " >{{product.date_added}}</p>
+		<dl>
+		<dt style="font-size: 20px" >	
+		 {{product.name}} 
+		</dt>
+		<dd style="color: #ce2029" >
+		 - {{product.price}} 
+		</dd>
+		</dl>
+		<pre> {{product.description}} </pre>
+		
 		
 	  </div>
 	</div>

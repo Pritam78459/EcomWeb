@@ -1,0 +1,14 @@
+{% extends "shop/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+	<div class="card" style="width:400px">
+		<div class="media border p-3" >
+			<img class ="rounded-circle" style="height: 60px;width: 60px;object-fit: fill"  src = "{{ user.profile.image.url}}">
+			</div>
+				<div  class="media-body" >
+					<h2 class = "account-heading" > {{ user.username}} </h2>
+					<p class = "text-secondary">{{ user.email }}</p>
+
+			</div>	
+	</div>
+{% endblock content %}
