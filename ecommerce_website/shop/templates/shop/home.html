@@ -6,7 +6,16 @@
 	{% for product in products %}
 	<div class="col-xl">
 	<div class="card" style="width:400px;background-color: #dcdcdc" >
-		<h6 style="margin-left: 2%;margin-top: 2%" > {{product.date_posted}}</h6><p style="color: dodgerblue;margin-right: 70%; font-size:25px;margin-left: 2%" >  {{ product.seller }}</p>
+		
+		<div>
+		<div style="float: left">
+		<img class = 'rounded-circle article' style="height: 80px;width: 80px;" src = "{{product.seller.profile.image.url}}">
+
+		</div>
+		<div style="float:right;margin-right: 50%" >
+		<p style="color: dodgerblue;  font-size:20px;margin-left: 2% ;margin-top: 30%;width:100px; ;" >  {{ product.seller }}</p>
+		</div>
+	</div>
 	  <img class="card-img-top" style="height:200px" src="{{product.image.url}}" alt="Card image"/>
 	  <div class="card-body" >
 		<dl>
@@ -18,7 +27,7 @@
 		</dd>
 		</dl>
 		<pre> {{product.description}} </pre>
-		
+		<h6 style="margin-left: 2%;margin-top: 2%" > {{product.date_posted}}</h6>
 		
 	  </div>
 	</div>
