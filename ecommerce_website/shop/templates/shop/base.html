@@ -30,9 +30,7 @@
 			    <li class="nav-item">
 			      <a class="nav-link" href="{% url 'shop-about' %}">About Us</a>
 			    </li>
-			    <li class="nav-item">
-			      <a class="nav-link" href="#">Explore</a>
-			    </li>
+			    
 			    
 
 			    <!-- Dropdown -->
@@ -40,6 +38,7 @@
 			  </ul>
 			  <ul class="navbar-nav" style="margin-left: 40%" >
 			  	{% if user.is_authenticated %}
+			  	<a class="nav-link" href="{% url 'product-create' %}">Sell</a>
 			  	<a class="nav-link" href="{% url 'profile' %}">Profile</a>
 			  	<a class="nav-link" href="{% url 'logout' %}">Logout</a>
 			  	{% else %}

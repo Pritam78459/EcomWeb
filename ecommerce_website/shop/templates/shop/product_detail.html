@@ -1,0 +1,41 @@
+{% extends "shop/base.html" %}
+{% block content %}
+<div class = "container">
+		<div class="row">
+			
+	<div class="col-xl">
+	<div class="card" style="width:400px;background-color: #dcdcdc" >
+		
+		<div>
+		<div style="float: left">
+		<img class = 'rounded-circle article' style="height: 70px;width: 70px;margin-left: 15%;margin-top: 5%" src = "{{object.seller.profile.image.url}}">
+
+		</div>
+		<div style="float:right;margin-right: 54%" >
+		<p style="color: dodgerblue;  font-size:20px;margin-left: 1% ;margin-top: 30%;width:100px; ;" >  {{ object.seller }}</p>
+		</div>
+	</div>
+	  <img class="card-img-top" style="height:200px" src="{{object.image.url}}" alt="Card image"/>
+	  <div class="card-body" >
+		<dl>
+		<dt style="font-size: 20px" >	
+		 {{object.name}}
+		</dt>
+		<dd style="color: #ce2029" >
+		 - {{object.price}} 
+		</dd>
+		</dl>
+		<pre> {{object.description}} </pre>
+		<h6 style="margin-left: 2%;margin-top: 2%" > {{object.date_posted}}</h6>
+		{% if object.seller == user %}
+			<a class='btn btn-secondary btn-sm mt-1 mb-1'  href="{% url 'product-update' object.id %}"> Update </a>
+			<a class='btn btn-danger btn-sm mt-1 mb-1'  href="{% url 'product-delete' object.id %}"> Delete </a>
+		{% endif %}
+	  </div>
+	</div>
+	&nbsp
+</div>
+</div>
+</div>
+	
+{% endblock content %}
