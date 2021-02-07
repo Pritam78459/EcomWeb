@@ -1,3 +1,4 @@
+
 {% extends "shop/base.html" %}
 {% block content %}
 <div class = "container">
@@ -5,7 +6,7 @@
 			
 	{% for product in products %}
 	<div class="col-xl">
-	<div class="card" style="width:400px;background-color: #dcdcdc" >
+	<div class="card" style="width:400px;background-color: white;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)" >
 		
 		<div>
 		<div style="float: left">
@@ -26,6 +27,9 @@
 		 - {{product.price}} 
 		</dd>
 		</dl>
+		<button data-product={{product.id}} data-action="add" type="button" class="btn btn-outline-secondary update-cart ">Add to Cart</button>
+		<br>
+		<br>
 		<pre> {{product.description}} </pre>
 		<h6 style="margin-left: 2%;margin-top: 2%" > {{product.date_posted}}</h6>
 		
@@ -38,5 +42,8 @@
 
 </div>
 </div>
+
 	
 {% endblock content %}
+
+

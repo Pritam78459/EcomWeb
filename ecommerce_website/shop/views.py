@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.http import JsonResponse
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic import (
 			ListView, 
@@ -7,7 +8,8 @@ from django.views.generic import (
 			UpdateView,
 			DeleteView,
 	)
-from .models import Product
+from .models import Product, Order, OrderItem, ShippingAddress, Customer
+import json
 
 
 def home(request):
@@ -62,3 +64,42 @@ class ProductDeleteView(LoginRequiredMixin,UserPassesTestMixin ,DeleteView):
 def about(request):
 	return render(request, 'shop/about.html',{'title' : 'About'})
 
+def cart(request):
+
+	if request.user.is_authenticated:
+		customer = request.user.customer
+		order, created = Order.objects.get_or_create(customer=customer, complete=False)
+		items = order.orderitem_set.all()
+	else:
+		items = []
+		order = {'get_cart_total':0,'get_cart_items':0}
+
+	context = {'items':items, 'order':order}
+	return render(request, 'shop/cart.html',context)
+
+def checkout(request):
+	if request.user.is_authenticated:
+		customer = request.user.customer
+		order, created = Order.objects.get_or_create(customer=customer, complete=False)
+		items = order.orderitem_set.all()
+	else:
+		items = []
+		order = {'get_cart_total':0,'get_cart_items':0}
+		
+	context = {'items':items, 'order':order}
+
+	return render(request,'shop/checkout.html',context)
+
+
+def updateItem(request):
+	data = json.loads(request.body)
+	productId = data['productId']
+	action = data['action']
+
+	print('Action: ',action)
+	print('productId: ',productId)
+
+	customer = request.user.seller
+	product = Product.objects.get(id=productId)
+
+	return JsonResponse('Item was added', safe=False)
